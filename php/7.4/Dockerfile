@@ -87,4 +87,5 @@ EXPOSE 80 8000
 CMD sudo chown -R www-data:www-data /projects && \
     sudo chmod -R 755 /projects && \
     sudo service ssh start && \
+    sudo service apache2 start && \
     tail -f /dev/null

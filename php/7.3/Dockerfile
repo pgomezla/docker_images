@@ -52,6 +52,8 @@ RUN sudo apt-get install -y \
     php7.3-zip \
     php-pear
 
+RUN sudo update-alternatives --set php /usr/bin/php7.3
+
 RUN sudo systemctl enable ssh && sudo service ssh start
 
 RUN sudo sed -i 's/\/var\/www\/html/\/projects/g'  /etc/apache2/sites-available/000-default.conf && \
@@ -82,4 +84,5 @@ EXPOSE 80 8000
 CMD sudo chown -R www-data:www-data /projects && \
     sudo chmod -R 777 /projects && \
     sudo service ssh start && \
+    sudo service apache2 start && \
     tail -f /dev/null
